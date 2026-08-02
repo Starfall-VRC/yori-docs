@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YORI Terms of Service</title>
+<meta name="description" content="Terms of service for the YORI Moderation Bot, a moderation bot for VRChat and Discord operated independently by Starfall.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%9B%A1%EF%B8%8F%3C/text%3E%3C/svg%3E">
+<style>
+  :root {
+    --field:#0B0820; --field-in:#1B1442; --primary:#9E86FF; --accent:#CBDCFF; --ink:#12101C;
+    --bg:#F6F5FB; --surface:#FFFFFF; --text:#1A1726; --muted:#575270;
+    --rule:rgba(158,134,255,.28); --hairline:rgba(26,23,38,.10); --link:#5B3FD1;
+    --card:#FBFAFF; --card-edge:rgba(158,134,255,.22);
+    --shadow:0 1px 2px rgba(11,8,32,.05),0 8px 30px rgba(11,8,32,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg:#0B0820; --surface:#14102A; --text:#ECEAF6; --muted:#ADA6C9;
+      --rule:rgba(158,134,255,.34); --hairline:rgba(203,220,255,.12); --link:#BEA9FF;
+      --card:#171233; --card-edge:rgba(158,134,255,.26);
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="light"] { --bg:#F6F5FB; --surface:#FFFFFF; --text:#1A1726; --muted:#575270; --rule:rgba(158,134,255,.28); --hairline:rgba(26,23,38,.10); --link:#5B3FD1; --card:#FBFAFF; --card-edge:rgba(158,134,255,.22); --shadow:0 1px 2px rgba(11,8,32,.05),0 8px 30px rgba(11,8,32,.06); }
+  :root[data-theme="dark"] { --bg:#0B0820; --surface:#14102A; --text:#ECEAF6; --muted:#ADA6C9; --rule:rgba(158,134,255,.34); --hairline:rgba(203,220,255,.12); --link:#BEA9FF; --card:#171233; --card-edge:rgba(158,134,255,.26); --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 34px rgba(0,0,0,.35); }
+
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin:0; background:var(--bg); color:var(--text); font-family:"Manrope","Segoe UI",system-ui,-apple-system,"Helvetica Neue",Arial,sans-serif; font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased; }
+  a { color:var(--link); text-underline-offset:2px; text-decoration-thickness:1px; }
+  a:focus-visible { outline:2px solid var(--primary); outline-offset:2px; border-radius:3px; }
+
+  .cover { background:radial-gradient(120% 140% at 42% 22%, var(--field-in) 0%, var(--field) 68%); color:#EDEBFB; padding:56px 24px 44px; border-bottom:2px solid var(--primary); }
+  .cover-inner { max-width:720px; margin:0 auto; }
+  .cover .lockup { display:block; width:248px; max-width:70%; height:auto; margin-bottom:26px; }
+  .descriptor { font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--primary); font-weight:700; margin:0 0 18px; }
+  .cover h1 { font-size:clamp(30px,6vw,46px); line-height:1.05; margin:0 0 10px; letter-spacing:-.01em; text-wrap:balance; color:#FFFFFF; font-weight:800; }
+  .cover .community { font-size:18px; color:var(--accent); margin:0 0 22px; font-weight:600; }
+  .cover .meta { font-size:14px; color:#C4BEE6; margin:0; }
+  .cover .meta .sep { opacity:.5; margin:0 8px; }
+  .affiliation { margin:24px 0 0; padding-top:18px; border-top:1px solid rgba(203,220,255,.18); font-size:12.5px; line-height:1.55; color:#9E98C4; max-width:60ch; }
+
+  main { max-width:720px; margin:0 auto; padding:8px 24px 40px; }
+  .tldr { background:var(--card); border:1px solid var(--card-edge); border-radius:14px; padding:22px 24px 8px; margin:36px 0 40px; box-shadow:var(--shadow); }
+  .tldr h2 { margin:0 0 4px; border:0; padding:0; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:var(--primary); }
+  .tldr ul { margin:12px 0 14px; padding-left:20px; }
+  .tldr li { margin:9px 0; }
+
+  section { margin:0 0 8px; scroll-margin-top:16px; }
+  h2 { font-size:21px; line-height:1.25; margin:38px 0 12px; padding-bottom:8px; border-bottom:1px solid var(--rule); letter-spacing:-.005em; text-wrap:balance; font-weight:700; }
+  h2 .n { color:var(--primary); font-variant-numeric:tabular-nums; margin-right:10px; font-weight:800; }
+  p { margin:12px 0; }
+  ul.body { padding-left:22px; margin:12px 0; }
+  ul.body li { margin:8px 0; }
+  ul.body li::marker { color:var(--primary); }
+  strong { font-weight:700; }
+
+  .callout { background:var(--card); border:1px solid var(--card-edge); border-left:3px solid var(--primary); border-radius:10px; padding:16px 18px; margin:18px 0; font-size:15.5px; }
+  .callout .label { display:block; font-weight:700; font-size:13px; letter-spacing:.04em; text-transform:uppercase; color:var(--primary); margin-bottom:6px; }
+
+  footer.doc { max-width:720px; margin:0 auto; padding:28px 24px 56px; border-top:1px solid var(--hairline); color:var(--muted); font-size:13.5px; line-height:1.6; }
+</style>
+</head>
+<body>
+
+<header class="cover">
+  <div class="cover-inner">
+    <svg class="lockup" viewBox="0 0 674.8666666666667 200" role="img" aria-label="YORI"><path d="M 105.00 108.75 L 105.00 72.70 Q 105.00 61.50 116.20 61.50 L 163.80 61.50 Q 175.00 61.50 175.00 72.70 L 175.00 108.75 Q 175.00 140.95 140.00 150.75 Q 105.00 140.95 105.00 108.75 Z" fill="none" stroke="#9E86FF" stroke-width="12.60" stroke-linejoin="round"/><mask id="hc" maskUnits="userSpaceOnUse" x="0" y="0" width="4000" height="4000"><path d="M 119.35 81.10 Q 132.30 85.65 140.00 109.45 L 140.00 133.60 M 160.65 81.10 Q 147.70 85.65 140.00 109.45 L 140.00 133.60" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="11.90"/><path d="M 119.35 81.10 Q 132.30 85.65 140.00 109.45 L 140.00 133.60 M 160.65 81.10 Q 147.70 85.65 140.00 109.45 L 140.00 133.60" fill="none" stroke="#000" stroke-linecap="round" stroke-width="6.65"/></mask><path d="M 119.35 81.10 Q 132.30 85.65 140.00 109.45 L 140.00 133.60 M 160.65 81.10 Q 147.70 85.65 140.00 109.45 L 140.00 133.60" fill="none" stroke="#CBDCFF" stroke-linecap="round" stroke-width="11.90" mask="url(#hc)"/><circle cx="119.35" cy="81.10" r="6.12" fill="#CBDCFF"/><circle cx="160.65" cy="81.10" r="6.12" fill="#CBDCFF"/><circle cx="140.00" cy="133.60" r="6.12" fill="#CBDCFF"/><path d="M338.6666666666667 148.0H354.93333333333334V108.66666666666666L387.5333333333333 52.0H368.8L346.8 90.26666666666667L324.73333333333335 52.0H306.0L338.6666666666667 108.66666666666666Z M444.8 150.0Q459.2 150.0 469.5 143.7Q479.8 137.4 485.3 126.13333333333334Q490.8 114.86666666666667 490.8 100.0Q490.8 85.06666666666666 485.3 73.83333333333333Q479.8 62.599999999999994 469.5 56.3Q459.2 50.0 444.8 50.0Q430.4666666666667 50.0 420.1666666666667 56.3Q409.8666666666667 62.599999999999994 404.3666666666667 73.83333333333333Q398.8666666666667 85.06666666666666 398.8666666666667 100.0Q398.8666666666667 114.86666666666667 404.3666666666667 126.13333333333334Q409.8666666666667 137.4 420.1666666666667 143.7Q430.4666666666667 150.0 444.8 150.0ZM444.8 134.86666666666667Q430.33333333333337 134.66666666666666 423.0666666666667 125.19999999999999Q415.8 115.73333333333333 415.8666666666667 100.0Q415.93333333333334 89.46666666666667 419.1333333333333 81.6Q422.3333333333333 73.73333333333333 428.73333333333335 69.36666666666667Q435.1333333333333 65.0 444.8 65.13333333333334Q459.33333333333337 65.33333333333333 466.5666666666667 74.8Q473.8 84.26666666666667 473.8 100.0Q473.8 110.46666666666667 470.5666666666667 118.36666666666667Q467.33333333333337 126.26666666666667 460.90000000000003 130.6Q454.4666666666667 134.93333333333334 444.8 134.86666666666667Z M511.46666666666664 148.0H527.5333333333333V114.46666666666667H550.3333333333334L566.6 148.0H584.8L567.0666666666666 111.6Q575.2666666666667 107.93333333333334 579.2666666666667 100.46666666666667Q583.2666666666667 93.0 583.2666666666667 83.26666666666667Q583.2666666666667 71.33333333333333 577.3 62.9Q571.3333333333334 54.46666666666667 558.8 52.53333333333333Q556.9333333333333 52.2 554.7333333333333 52.1Q552.5333333333333 52.0 551.1333333333333 52.0H511.46666666666664ZM527.5333333333333 99.46666666666667V67.06666666666666H550.4666666666667Q551.8 67.06666666666666 553.4666666666667 67.19999999999999Q555.1333333333333 67.33333333333333 556.5333333333333 67.66666666666667Q560.5333333333333 68.66666666666667 562.8333333333333 71.23333333333333Q565.1333333333333 73.8 566.0999999999999 77.0Q567.0666666666666 80.2 567.0666666666666 83.26666666666667Q567.0666666666666 86.33333333333334 566.0999999999999 89.53333333333333Q565.1333333333333 92.73333333333333 562.8333333333333 95.26666666666667Q560.5333333333333 97.8 556.5333333333333 98.8Q555.1333333333333 99.2 553.4666666666667 99.33333333333334Q551.8 99.46666666666667 550.4666666666667 99.46666666666667Z M608.1333333333333 148.0H624.2V52.0H608.1333333333333Z" fill="#CBDCFF"/></svg>
+    <p class="descriptor">Moderation bot for VRChat and Discord</p>
+    <h1>Terms of Service</h1>
+    <p class="community">Operated independently by <strong>Starfall</strong></p>
+    <p class="meta">Effective <strong>August 2, 2026</strong> <span class="sep">·</span> Version 1.0</p>
+    <p class="affiliation">
+      A Discord and VRChat bot. An independent project - not affiliated with, endorsed by, or
+      sponsored by Discord or VRChat.
+    </p>
+  </div>
+</header>
+
+<main>
+  <section class="tldr" aria-label="Summary">
+    <h2>In short</h2>
+    <ul>
+      <li>These terms cover your use of the YORI moderation bot, operated independently by Starfall.</li>
+      <li>YORI is a tool run by human staff. It helps staff log and act on moderation decisions - it does not replace human judgment, and it never bans, kicks, or mutes anyone on its own.</li>
+      <li>Use it honestly: don't try to exploit, evade, overload, or misuse it.</li>
+      <li>It is provided "as is," with no guarantee of uptime; the operator may change or discontinue it.</li>
+      <li>Your data is handled under the <a href="PRIVACY_POLICY.html">Privacy Policy</a>.</li>
+    </ul>
+  </section>
+
+  <section id="acceptance">
+    <h2><span class="n">1</span>Acceptance of these terms</h2>
+    <p>
+      These Terms of Service ("Terms") govern your use of and interaction with the YORI Moderation
+      Bot ("YORI," "the bot," "we," "us"), operated independently by <strong>Starfall</strong>. By
+      participating in a Discord server or VRChat group where YORI operates, or by interacting with
+      the bot, you agree to these Terms. If you do not agree, do not interact with the bot.
+    </p>
+  </section>
+
+  <section id="what">
+    <h2><span class="n">2</span>What YORI is</h2>
+    <p>
+      YORI is a moderation tool for a VRChat group and its associated Discord server. It helps
+      volunteer staff log moderation actions, look up members, maintain watch-lists, and receive
+      advisory alerts (for example, a possible raid). It is a tool used by the community's staff, not
+      a product of Discord or VRChat, and not a general-purpose service offered to the public.
+    </p>
+  </section>
+
+  <section id="acceptable-use">
+    <h2><span class="n">3</span>Acceptable use</h2>
+    <p>When interacting with a space where YORI operates, you agree not to:</p>
+    <ul class="body">
+      <li>Attempt to exploit, probe, reverse-engineer, or interfere with the bot or its infrastructure for abusive purposes.</li>
+      <li>Attempt to evade, circumvent, or defeat moderation (for example, ban evasion or falsifying identity).</li>
+      <li>Overload, flood, or spam the bot or the spaces it operates in.</li>
+      <li>Impersonate staff, or misrepresent a bot action as your own or vice versa.</li>
+      <li>Use the community's spaces or the bot to harass, threaten, or harm others.</li>
+    </ul>
+    <p>Staff may restrict your access to the bot or the community's spaces for violating these Terms or the community's own rules.</p>
+  </section>
+
+  <section id="human">
+    <h2><span class="n">4</span>Moderation decisions are made by people</h2>
+    <p>
+      YORI surfaces information for staff and carries out actions that staff direct. <strong>Every
+      enforcement decision against an individual is made or approved by a human staff member</strong> -
+      YORI does not independently decide to ban, kick, mute, or restrict anyone. Questions about a
+      moderation decision, including appeals, should be directed to the community's staff.
+    </p>
+  </section>
+
+  <section id="privacy">
+    <h2><span class="n">5</span>Your data and privacy</h2>
+    <p>
+      YORI's handling of personal data is described in the <a href="PRIVACY_POLICY.html">Privacy
+      Policy</a>, which forms part of these Terms. In short, YORI stores moderation records and a
+      small set of related fields, never sells data, and supports requests to access, correct, or
+      delete data about you.
+    </p>
+  </section>
+
+  <section id="availability">
+    <h2><span class="n">6</span>Availability and changes to the service</h2>
+    <p>
+      YORI is provided on a best-effort, "as is" and "as available" basis. The operator may add,
+      change, suspend, or discontinue any part of the bot at any time, with or without notice, and
+      does not guarantee that it will be available, uninterrupted, or error-free.
+    </p>
+  </section>
+
+  <section id="warranty">
+    <h2><span class="n">7</span>Disclaimer of warranties</h2>
+    <p>
+      To the fullest extent permitted by law, YORI is provided without warranties of any kind, whether
+      express or implied, including but not limited to fitness for a particular purpose,
+      merchantability, and non-infringement. You use the bot and participate in the community's spaces
+      at your own risk.
+    </p>
+  </section>
+
+  <section id="liability">
+    <h2><span class="n">8</span>Limitation of liability</h2>
+    <p>
+      To the fullest extent permitted by law, the operator will not be liable for any indirect,
+      incidental, special, consequential, or exemplary damages, or for any loss of data, arising from
+      or related to your use of, or inability to use, the bot.
+    </p>
+  </section>
+
+  <section id="termination">
+    <h2><span class="n">9</span>Suspension and termination</h2>
+    <p>
+      Staff may suspend or remove your access to the bot or the community's spaces at their
+      discretion, including for violations of these Terms or the community's rules. The operator may
+      also discontinue the bot entirely. Provisions that by their nature should survive - including
+      the disclaimers and limitation of liability above - survive any termination.
+    </p>
+  </section>
+
+  <section id="affiliation">
+    <h2><span class="n">10</span>No affiliation with Discord or VRChat</h2>
+    <p>
+      YORI is an independent project. It is <strong>not affiliated with, endorsed by, or sponsored by
+      Discord or VRChat</strong>. Your use of Discord and VRChat is also governed by their own terms
+      and policies, which you remain responsible for following.
+    </p>
+  </section>
+
+  <section id="changes">
+    <h2><span class="n">11</span>Changes to these terms</h2>
+    <p>
+      We may update these Terms from time to time. When we do, we will update the effective date
+      above. Your continued interaction with the bot after a change means you accept the updated
+      Terms. The current version is available on request at any time.
+    </p>
+  </section>
+
+  <section id="law">
+    <h2><span class="n">12</span>Governing law</h2>
+    <p>
+      These Terms are governed by the laws of the Commonwealth of Pennsylvania, United States,
+      without regard to its conflict-of-law rules.
+    </p>
+  </section>
+
+  <section id="contact">
+    <h2><span class="n">13</span>Contact us</h2>
+    <p>Questions about these Terms can be sent to:</p>
+    <p><strong>Email <a href="mailto:starfall.vrc@gmail.com">starfall.vrc@gmail.com</a></strong></p>
+  </section>
+</main>
+
+<footer class="doc">
+  These Terms describe use of the YORI Moderation Bot. They are not legal advice - because the
+  community has EU, UK, and California members, they should be reviewed by counsel before publishing.
+</footer>
+
+</body>
+</html>
