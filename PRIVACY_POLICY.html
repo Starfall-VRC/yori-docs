@@ -163,7 +163,7 @@
     <p class="descriptor">Moderation bot for VRChat and Discord</p>
     <h1>Privacy&nbsp;Policy</h1>
     <p class="community">Operated independently by <strong>Starfall</strong></p>
-    <p class="meta">Effective <strong>August 2, 2026</strong> <span class="sep">·</span> Version 1.0</p>
+    <p class="meta">Effective <strong>August 4, 2026</strong> <span class="sep">·</span> Version 1.1</p>
     <p class="affiliation">
       A Discord and VRChat bot. An independent project - not affiliated with, endorsed by, or
       sponsored by Discord or VRChat.
@@ -227,6 +227,7 @@
     <ul class="body">
       <li>Discord user ID and username, recorded against every action they log and every ban request they raise, so entries have a clear, accountable author.</li>
       <li>Which of the bot's commands they use and how often, kept as aggregate counts for internal usage statistics - not message content.</li>
+      <li>A record of any change they make to the bot's staff permission roles - who made the change, when, and which permission level was changed - so that changes to who holds moderation powers are accountable and reviewable. This applies only to the small number of staff able to change those settings.</li>
     </ul>
 
     <h3>What YORI does <em>not</em> collect</h3>
@@ -291,6 +292,7 @@
           <tr><td>Avatar watch-list fingerprints</td><td>Kept until a staff member removes the watch-list entry.</td></tr>
           <tr><td>Event / hangout records</td><td>Kept until staff remove them (soft-removable, same as log entries).</td></tr>
           <tr><td>Database backups (local &amp; encrypted off-site)</td><td>Pruned automatically once total storage passes the configured cap; the most recent verified backup is never eligible for deletion.</td></tr>
+          <tr><td>Staff permission-role change history</td><td>Kept indefinitely as an accountability record. On request, a staff member's identity is removed from these entries while the record of what changed is preserved.</td></tr>
           <tr><td>Bot activity logs (console/file)</td><td>Rotated and deleted automatically after 7 days.</td></tr>
         </tbody>
       </table>
