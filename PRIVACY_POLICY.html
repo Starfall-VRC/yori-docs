@@ -163,7 +163,7 @@
     <p class="descriptor">Moderation bot for VRChat and Discord</p>
     <h1>Privacy&nbsp;Policy</h1>
     <p class="community">Operated independently by <strong>Starfall</strong></p>
-    <p class="meta">Effective <strong>August 4, 2026</strong> <span class="sep">·</span> Version 1.1</p>
+    <p class="meta">Effective <strong>August 11, 2026</strong> <span class="sep">·</span> Version 1.4</p>
     <p class="affiliation">
       A Discord and VRChat bot. An independent project - not affiliated with, endorsed by, or
       sponsored by Discord or VRChat.
@@ -178,8 +178,8 @@
       <li>YORI is a moderation tool. It logs the actions staff take against VRChat group members - warnings, mutes, kicks, bans, and group-role changes - and supports moderation on the linked Discord server too.</li>
       <li>It keeps a running <strong>count of how many messages each Discord member sends</strong> (a number, not what the messages say), and it fingerprints avatar images (a short mathematical hash, never a copy of the picture) to compare them against a staff watch-list.</li>
       <li>When someone joins the VRChat group, YORI checks their public profile against staff-configured watch terms and, if something matches, flags it <strong>for a human to review</strong> - it records which term matched, not a copy of your profile.</li>
-      <li>It does <strong>not</strong> store the text of your chat messages, your DMs, or any payment or real-world identity information.</li>
-      <li><strong>YORI never bans, kicks, or mutes anyone on its own.</strong> Its automated checks only raise alerts; a human makes every enforcement decision.</li>
+      <li>It does <strong>not</strong> keep the text of your chat messages (one narrow exception, described below), your DMs, or any payment or real-world identity information.</li>
+      <li><strong>A human makes nearly every enforcement decision.</strong> YORI's checks normally only raise alerts. The exception is optional, off-by-default anti-spam enforcement that can apply a temporary, reversible <strong>Discord timeout</strong> (1 hour by default) on its own when it detects spam, a blocked image, or a flood of slur or hate terms; staff are notified of every one and can undo it in a click.</li>
       <li>Data lives in a private database run by community staff, with encrypted backups. It is never sold or shared with advertisers. You can ask staff to see, correct, or delete data about you - see <a href="#rights">Your rights</a>.</li>
     </ul>
   </section>
@@ -220,6 +220,7 @@
       <li>Discord user ID, username, global display name, and an <strong>avatar key</strong> (an identifier for the member's current avatar image).</li>
       <li><strong>An avatar image fingerprint</strong>, cached per member so the same unchanged avatar isn't re-checked repeatedly. As above, this is a perceptual hash, never a copy of the image, and it is replaced when the member changes their avatar.</li>
       <li><strong>A running count of how many messages each member has sent</strong> since counting began for that server - the count only, <em>not</em> the text or content of any message.</li>
+      <li><strong>Message content, read in real time to detect spam.</strong> YORI checks whether a member is posting the same thing rapidly or across many channels at once. It processes the text in memory only and does not save it to its database. When a spam alert is raised and staff have turned the option on, a short, truncated excerpt of the flagged message is shown in a staff-only channel so staff can see what was flagged; the rest is reached by a link. Separately, if staff enable the optional auto-delete mode (off by default), then when YORI removes a caught spam message it keeps a full copy of that message's text in a staff-only channel, as a record of what was removed and why. YORI does not read direct messages.</li>
       <li><strong>Cross-platform linkage.</strong> A member's VRChat identity and Discord identity can be recorded together so staff can recognise one person across both platforms.</li>
     </ul>
 
@@ -232,7 +233,7 @@
 
     <h3>What YORI does <em>not</em> collect</h3>
     <ul class="body">
-      <li>The text or content of regular chat messages. YORI counts messages but does not read or store what they say.</li>
+      <li>The text of your chat messages is not stored in YORI's database, and YORI never reads your direct messages. (YORI does read message content in memory to detect spam, and may show staff a short excerpt of a flagged message; and if the optional auto-delete mode is enabled, it keeps a full copy of a deleted spam message in a staff-only channel - not in its database, but a durable copy nonetheless. See "From Discord server members being moderated" above.)</li>
       <li>Your direct messages (DMs).</li>
       <li>Payment, real-world identity, or contact information of any kind.</li>
       <li>VRChat browsing activity, friend lists, or anything beyond the profile and membership fields described above.</li>
@@ -293,6 +294,7 @@
           <tr><td>Event / hangout records</td><td>Kept until staff remove them (soft-removable, same as log entries).</td></tr>
           <tr><td>Database backups (local &amp; encrypted off-site)</td><td>Pruned automatically once total storage passes the configured cap; the most recent verified backup is never eligible for deletion.</td></tr>
           <tr><td>Staff permission-role change history</td><td>Kept indefinitely as an accountability record. On request, a staff member's identity is removed from these entries while the record of what changed is preserved.</td></tr>
+          <tr><td>Deleted-spam records (only when the optional auto-delete mode is enabled)</td><td>The full text of an auto-deleted spam message is kept in a staff-only channel until staff remove it, or the member's data is deleted on request.</td></tr>
           <tr><td>Bot activity logs (console/file)</td><td>Rotated and deleted automatically after 7 days.</td></tr>
         </tbody>
       </table>
@@ -373,19 +375,49 @@
   <section id="automated">
     <h2><span class="n">9</span>Automated actions</h2>
     <p>
-      <strong>YORI never bans, kicks, mutes, or changes anyone's roles on its own.</strong> Every
-      enforcement action against an individual is carried out or approved by a human staff member.
+      <strong>A human carries out or approves nearly every enforcement action.</strong> The
+      exceptions, described below, are optional anti-spam enforcement modes that are off by default;
+      apart from those, YORI's automated parts only surface things for a person to review.
     </p>
-    <p>Some of YORI's <em>detection</em> is automated, but all of it only surfaces things for a person to review:</p>
+    <p>Most of YORI's <em>detection</em> is automated, but only surfaces things for a person to review:</p>
     <ul class="body">
       <li>It flags new members whose public profile matches a staff watch-list, and - for a match - creates an internal moderation record and a ban <em>request</em> that a staff member must approve or dismiss. The request is never carried out automatically.</li>
       <li>It compares avatar fingerprints against a watch-list and posts an advisory alert on a match.</li>
       <li>It notices a sudden spike in joins (a possible raid) and posts an advisory alert. It takes no action itself - no kick, ban, or lockdown; staff decide how to respond.</li>
+      <li>It detects Discord message spam - a member posting across many channels or very fast, an image matching a staff-maintained block-list of known-bad images, or a rapid flood of listed slur or hate terms - and posts an advisory alert with manual action buttons.</li>
     </ul>
     <p>
-      Because a human reviews and decides every enforcement outcome, YORI does not make
-      "solely automated" decisions that produce legal or similarly significant effects without human
-      involvement.
+      <strong>The automatic enforcement actions</strong> are optional, off-by-default anti-spam
+      modes. When one is enabled, YORI can apply a temporary <strong>Discord timeout</strong> (1 hour by
+      default, set by staff) to a member on its own, without a staff member approving that specific
+      action:
+    </p>
+    <ul class="body">
+      <li>
+        <strong>Semi-Auto</strong> times a member out when a clear automated spam signal fires: a spam
+        burst (across several channels, or rapidly within one) that coincides with a strong signal such
+        as an invite link or a mass ping; a posted image that matches the staff-maintained block-list of
+        known-bad images (a single match is enough, with no burst needed); or a rapid flood of listed
+        slur or hate terms.
+      </li>
+      <li>
+        <strong>Full-Auto</strong> is wider: it can time a member out on any of those detection signals
+        on its own, including a lone spam burst that Semi-Auto would only raise an alert for. It is meant
+        for stretches when staff are not available, and it carries the highest chance of acting on a
+        member who has done nothing wrong.
+      </li>
+      <li>
+        <strong>Scheduled Full-Auto.</strong> Staff can also configure a recurring daily window (off by
+        default) during which YORI switches to Full-Auto automatically. If such a window is set,
+        automatic timeouts can occur during those hours even when the mode is otherwise set to
+        alerts-only.
+      </li>
+    </ul>
+    <p>
+      Every automatic timeout is temporary, fully logged, and staff are notified of each one and can
+      reverse it - lifting the timeout and clearing it from your record - with one click. To dispute an
+      automatic timeout, contact a staff member (for example in the server's mod-mail or support
+      channel). Every other enforcement outcome is decided by a human.
     </p>
   </section>
 
