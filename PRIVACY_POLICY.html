@@ -163,7 +163,7 @@
     <p class="descriptor">Moderation bot for VRChat and Discord</p>
     <h1>Privacy&nbsp;Policy</h1>
     <p class="community">Operated independently by <strong>Starfall</strong></p>
-    <p class="meta">Effective <strong>August 11, 2026</strong> <span class="sep">·</span> Version 1.5</p>
+    <p class="meta">Effective <strong>August 16, 2026</strong> <span class="sep">·</span> Version 1.6</p>
     <p class="affiliation">
       A Discord and VRChat bot. An independent project - not affiliated with, endorsed by, or
       sponsored by Discord or VRChat.
@@ -209,10 +209,11 @@
     <ul class="body">
       <li>VRChat user ID and display name, looked up automatically when a log entry is created or a member is checked.</li>
       <li>The rule that was broken, the action taken (warn, mute, kick, ban, unban, or a group-role change), a written description, any staff notes, the staff member who logged it, and the time.</li>
-      <li>VRChat group role and membership status, checked live when a staff member looks a member up; role changes are recorded in the log.</li>
+      <li>VRChat group role and membership status, checked live when a staff member looks a member up; role changes are recorded in the log. When a member is banned, YORI additionally records whether they were a member of each of the group(s) affected at that moment - a single yes/no per group - so that if the ban is later lifted, staff can offer to re-invite them to the group(s) they were in. This indicator is kept only while the ban is in place: it is cleared automatically when the ban is lifted, and it is also removed if the member's data is erased.</li>
       <li><strong>Avatar image fingerprint (checked, not stored).</strong> When a member joins or is checked, YORI computes a <em>perceptual hash</em> - a short mathematical fingerprint, never a copy of the image - and compares it against a staff-maintained watch-list of known-problem avatars. On the VRChat side this fingerprint is used for the comparison and then discarded; it is not kept.</li>
       <li><strong>Join-time profile screening.</strong> When someone joins the VRChat group, YORI checks public profile fields (display name, bio/status, and pronouns) against staff-configured watch terms. If a term matches, YORI posts a note to a staff channel and creates an internal moderation record indicating <em>which term matched which field</em> - <strong>not</strong> a copy of the member's profile text - and raises a ban <em>request</em> for a staff member to approve or dismiss. It does not ban anyone automatically.</li>
       <li><strong>Event / hangout records.</strong> When staff log a group hangout, YORI records who hosted or co-hosted it, the activity type, and any notes (via the <code>/event</code> commands).</li>
+      <li><strong>Group invitations.</strong> When a staff member invites someone to one of the VRChat group(s) YORI manages (for example, onboarding a new staff member, or re-inviting a member whose ban was lifted), YORI keeps a short accountability record of who was invited, to which group, which staff member sent it, and when. It keeps no display name or profile information about the invited person, only their VRChat ID, and the record is removed if the member's data is erased.</li>
     </ul>
 
     <h3>From Discord server members being moderated</h3>
@@ -292,6 +293,8 @@
           <tr><td>Cached Discord avatar fingerprints</td><td>Overwritten when the member changes their avatar; removed when the member's data is deleted.</td></tr>
           <tr><td>Avatar watch-list fingerprints</td><td>Kept until a staff member removes the watch-list entry.</td></tr>
           <tr><td>Event / hangout records</td><td>Kept until staff remove them (soft-removable, same as log entries).</td></tr>
+          <tr><td>Ban-time group-membership indicator</td><td>Kept only while the ban is in place; cleared automatically when the ban is lifted, and removed when a member's data is deleted.</td></tr>
+          <tr><td>Group invitation records</td><td>Kept until a member's data is deleted on request.</td></tr>
           <tr><td>Database backups (local &amp; encrypted off-site)</td><td>Pruned automatically once total storage passes the configured cap; the most recent verified backup is never eligible for deletion.</td></tr>
           <tr><td>Staff permission-role change history</td><td>Kept indefinitely as an accountability record. On request, a staff member's identity is removed from these entries while the record of what changed is preserved.</td></tr>
           <tr><td>Deleted-spam records (only when the optional auto-delete mode is enabled)</td><td>The full text of an auto-deleted spam message is kept in a staff-only channel until staff remove it, or the member's data is deleted on request.</td></tr>
@@ -303,6 +306,11 @@
       <span class="label">Deletion is real</span>
       Once a log entry is permanently deleted by staff, it is gone from the database and from every
       backup taken after that point - there is no hidden retention beyond what is described above.
+      One caveat: some actions also post a notice into a staff-only Discord channel (for example an
+      alert, an audit notice, or a ban-request or invite result). Those channel messages are not part
+      of the database; when a member's data is erased, staff remove any such messages by a separate
+      manual sweep rather than by the database deletion, and Discord's own copy follows Discord's
+      retention, not YORI's.
     </div>
   </section>
 
