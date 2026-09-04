@@ -163,7 +163,7 @@
     <p class="descriptor">Moderation bot for VRChat and Discord</p>
     <h1>Privacy&nbsp;Policy</h1>
     <p class="community">Operated independently by <strong>Starfall</strong></p>
-    <p class="meta">Effective <strong>August 16, 2026</strong> <span class="sep">·</span> Version 1.6</p>
+    <p class="meta">Effective <strong>September 4, 2026</strong> <span class="sep">·</span> Version 1.7</p>
     <p class="affiliation">
       A Discord and VRChat bot. An independent project - not affiliated with, endorsed by, or
       sponsored by Discord or VRChat.
@@ -180,7 +180,7 @@
       <li>When someone joins the VRChat group, YORI checks their public profile against staff-configured watch terms and, if something matches, flags it <strong>for a human to review</strong> - it records which term matched, not a copy of your profile.</li>
       <li>It does <strong>not</strong> keep the text of your chat messages (one narrow exception, described below), your DMs, or any payment or real-world identity information.</li>
       <li><strong>A human makes nearly every enforcement decision.</strong> YORI's checks normally only raise alerts. The exception is optional, off-by-default anti-spam enforcement that can apply a temporary, reversible <strong>Discord timeout</strong> (1 hour by default) on its own when it detects spam, a blocked image, or a flood of slur or hate terms; staff are notified of every one and can undo it in a click.</li>
-      <li>Data lives in a private database run by community staff, with encrypted backups. It is never sold or shared with advertisers. You can ask staff to see, correct, or delete data about you - see <a href="#rights">Your rights</a>.</li>
+      <li>Data lives in a private database run by the bot's operator (Starfall), with encrypted backups. It is never sold or shared with advertisers. You can ask staff to see, correct, or delete data about you - see <a href="#rights">Your rights</a>.</li>
     </ul>
   </section>
 
@@ -188,8 +188,9 @@
     <h2><span class="n">1</span>Scope</h2>
     <p>
       This policy describes how the YORI Moderation Bot ("YORI," "the bot," "we," "us") collects,
-      uses, stores, and protects data while helping volunteer staff moderate a VRChat group and its
-      associated Discord server. It applies to three groups of people: <strong>staff members</strong>
+      uses, stores, and protects data while helping volunteer staff moderate <strong>The Virtual Reality
+      Show (TVRS)</strong>, a VRChat group and its associated Discord server. It applies to three groups
+      of people: <strong>staff members</strong>
       who run the bot's commands, <strong>VRChat group members</strong> whose accounts are moderated,
       and <strong>Discord server members</strong> whose accounts are moderated on the Discord side.
     </p>
@@ -267,9 +268,10 @@
     <h2><span class="n">4</span>Storage &amp; security</h2>
     <p>
       All moderation data lives in a database file on a virtual machine hosted with a cloud
-      infrastructure provider. That machine is administered exclusively by community staff - the
-      cloud provider supplies the underlying hardware and network only, has no moderation-tool access
-      of its own, and is not accessible to Discord or VRChat themselves.
+      infrastructure provider. That machine is administered exclusively by the bot's operator (Starfall) -
+      the cloud provider supplies the underlying hardware and network only, has no moderation-tool access
+      of its own, and is not accessible to Discord or VRChat themselves. Community staff run the bot's
+      commands; they do not administer the server or the database.
     </p>
     <ul class="body">
       <li>Access to every command is gated by Discord role, checked fresh on every use - someone without the right role gets a private "you don't have permission" reply, nothing more.</li>
